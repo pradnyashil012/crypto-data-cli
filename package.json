@@ -1,0 +1,23 @@
+{
+  "name": "crypto-data",
+  "version": "1.0.0",
+  "description": "Crypto data",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "crypto-data": "./bin/crypto-data"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pradnyashil",
+  "license": "ISC",
+  "dependencies": {
+    "arg": "^5.0.0",
+    "esm": "^3.2.25",
+    "node-fetch": "^2.6.1"
+  }
+}

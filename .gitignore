@@ -1,0 +1,9 @@
+node_modules/
+backup/
+
+*.csv
+*.zip
+
+portfolio.json
+
+src/test.js

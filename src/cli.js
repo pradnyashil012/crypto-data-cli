@@ -53,7 +53,7 @@ const parseArguments = (rawArg) => {
     return {
       option,
       values: {
-        date: dateParser(args["--date"]),
+        date: args["--date"] && dateParser(args["--date"]),
         token: args["--token"],
         filePath: args["--portfolio"],
       },

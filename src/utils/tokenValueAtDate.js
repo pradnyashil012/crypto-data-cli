@@ -14,6 +14,9 @@ export default async function tokenValueAtDate(token, date) {
   //reading file
   const portfolio = JSON.parse(fs.readFileSync("portfolio.json"));
 
+  if (!(token in portfolio))
+    return console.error("\nToken not found in portfolio\n");
+
   //fetching prices of tokens
   const response = await fetch(
     `${api_url}/data/pricehistorical?fsym=${token}&tsyms=USD&ts=${date}&api_key=${api_key}`
@@ -32,5 +35,9 @@ export default async function tokenValueAtDate(token, date) {
   //calculating value of the token at date
   const value = qty * price[token].USD;
 
-  console.log(`\nValue of \x1b[33m${token}\x1b[37m at given date is \x1b[33m${value}\x1b[37m`);
+  console.log(
+    `\nValue of \x1b[33m${token}\x1b[37m at given date is \x1b[33mUSD ${value.toFixed(
+      6
+    )}\x1b[37m`
+  );
 }

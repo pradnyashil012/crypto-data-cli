@@ -15,6 +15,9 @@ export default async function tokenValue(token) {
   //reading the file
   const portfolio = JSON.parse(fs.readFileSync("portfolio.json"));
 
+  if (!(token in portfolio))
+    return console.error("\nToken not found in portfolio\n");
+
   //fetching token value
   const response = await fetch(
     `${api_url}/data/pricemulti?fsyms=${token}&tsyms=USD&api_key=${api_key}`
@@ -26,5 +29,9 @@ export default async function tokenValue(token) {
   //and price fetched from an api
   const value = portfolio[token].tq * price[token].USD;
 
-  console.log(`\nCurrent value of \x1b[33m${token}\x1b[37m is \x1b[33m${value}\x1b[37m`);
+  console.log(
+    `\nCurrent value of \x1b[33m${token}\x1b[37m is \x1b[33mUSD ${value.toFixed(
+      6
+    )}\x1b[37m`
+  );
 }

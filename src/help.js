@@ -10,7 +10,7 @@ const args = [
     description: "Sync your portfolio",
   },
   {
-    command: "",
+    command: null,
     name: "Portfolio Value",
     description: "Print the latest portfolio value per token in USD",
   },
@@ -31,17 +31,29 @@ const args = [
   },
 ];
 
+//returns n tabs recursively
+const tab = (n) => (n <= 0 ? "" : "\t" + tab(n - 1));
+
+// print string within fixed tab length
+const appendTabs = (str = "", max = 4) => {
+  if (!str || !str.length) return tab(max);
+  return `${str}${tab(Math.floor(max - str.length / 8) + 1)}`;
+};
+
 const help = (error) => {
   if (error) console.error(`\nError: ${error}`);
 
+  console.clear(); //first it will clear console
+
   console.log(`\nUsage: crypto-data [command]\n`);
 
-  console.table(args);
-  //   args.forEach((e) =>
-  //     console.log(
-  //       `${e.command ? e.command : "-"}\t\t${e.name}\t\t${e.description}`
-  //     )
-  //   );
+  console.log(`Command${tab(6)}Name${tab(3)}Description\n`);
+
+  args.forEach((e) =>
+    console.log(
+      `${appendTabs(e.command, 6)}${appendTabs(e.name, 3)}${e.description}`
+    )
+  );
 };
 
 export default help;

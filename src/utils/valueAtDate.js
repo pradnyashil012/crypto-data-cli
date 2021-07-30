@@ -38,6 +38,6 @@ export default async function valueAtDate(date) {
     //calculating values per token
     values[e] = qty * price[e].USD;
 
-    console.log("\t", e, values[e]);
+    console.log(`\t${e}: \x1b[33mUSD ${values[e].toFixed(6)}\x1b[37m`);
   });
 }

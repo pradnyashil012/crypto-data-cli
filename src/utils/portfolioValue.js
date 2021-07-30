@@ -34,6 +34,6 @@ export default async function portfolioValue() {
     values[e] = portfolio[e].tq * prices[e].USD;
 
     //e => token(s)
-    console.log("\t", e, values[e]);
+    console.log(`\t${e}: \x1b[33mUSD ${values[e].toFixed(6)}\x1b[37m`);
   });
-};
+}
